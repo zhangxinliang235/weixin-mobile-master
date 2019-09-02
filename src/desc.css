@@ -1,0 +1,114 @@
+
+.desc {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+}
+
+.select-sel{
+    width: 100%;
+    height:50px;
+}
+
+.select{
+
+    margin: 10px 12px 0 0 ;
+    width: 100px;
+    float: left;
+    color: RGB(5,145,223);
+    font-size:16px;
+    margin-left:16px;
+    border: none !important;
+    /*border: 1px solid red;*/
+}
+
+.select-name{
+    text-align: center;
+    line-height: 40px;
+    height: 50px;
+    font-size: 16px;
+    padding: 0 0 0 0 ;
+}
+.iconfont{
+    line-height: 40px;
+    height: 50px;
+}
+
+
+.list{
+    background-color: blue;
+    /*width: 60px;*/
+    /*float: left;*/
+}
+
+.nav-s{
+    /*display:flex;*/
+    background-color: #2EA3E5;
+    /*width: 100%;*/
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    color:black;
+    padding-left: 20px;
+}
+
+.nav-color{
+    color: white !important;
+}
+
+.nav-index{
+    /*width: 300px;*/
+    color: black;
+    font-size: 16px;
+    display:flex;
+    text-algin:center
+}
+
+.nav-index>div:first-child{
+    width:20%
+}
+
+.nav-index>div:last-child{
+    width:40%
+}
+.nav{
+    /*margin-left: 10px;*/
+    margin-right: 54px;
+}
+
+.nav1{
+    width: 15%;
+    /*float: left;*/
+    /*width: 40%;*/
+    padding-left: 20px;
+}
+.nav2{
+    /*float: left;*/
+    width: 30%;
+    padding-left: 30px;
+}
+.nav3{
+    /*float: left;*/
+    width: 20%;
+    /*padding-left: 30px;*/
+
+}
+.nav4{
+    text-algin:center;
+}
+
+
+
+.am-list-content{
+    background-color: #2EA3E5;
+    width: 100%;
+}
+select{
+    margin-left: 60px;
+    border: none;
+    width: 90px;
+    height: 30px;
+}
