@@ -1,0 +1,2039 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* 通用 */
+.clear {
+    clear: both;
+}
+
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("./images/bg_low.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y: scroll;
+}
+
+/* 预警地图信息窗 */
+.alarm-popup {
+
+}
+
+.alarm-popup-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alarm-popup-desc {
+    text-indent: 2em;
+}
+
+/* 预警列表 */
+.alarm-list {
+    padding-top: 50px;
+    background-color: #f2f2f2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
+.alarm-list-item {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.alarm-list-item:first-child {
+    /*margin-top: 40px;*/
+}
+
+.alarm-list-item-icon {
+    width: 30%;
+    height: 100px;
+    line-height: 100px;
+}
+
+.alarm-list-item-icon > img {
+    vertical-align: middle;
+    margin-top: -4px;
+    width: 80%;
+}
+
+.alarm-list-item-content {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.alarm-list-item-content-title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+    padding-top: 15px;
+}
+
+.alarm-list-item-content-desc {
+    width: 90%;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 20px;
+    line-height: 20px;
+}
+
+.alarm-list-item-content-time {
+
+}
+
+/* 预警详情 */
+.alarm-details {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 60px 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #f2f2f2;
+}
+
+.alarm-details-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.alarm-details-icon {
+    height: 100px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.alarm-details-icon > img {
+    margin: 0 auto;
+    height: 100%;
+}
+
+/* 自定义组件 */
+.select {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid #aab3ee;
+    /*overflow: hidden;*/
+}
+
+.select-name {
+    flex: 1;
+    height: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: left;
+}
+
+.select-arrow {
+    width: 35px;
+    height: 100%;
+    text-align: center;
+    color: #aab3ee;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.select-option {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-top: 4px;
+    box-shadow: 0 0 10px #aab3ee;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.select-option-name {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    color: #000000;
+    text-align: left;
+}
+
+/* 天气预报 */
+.forecast {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.forecast-bg {
+    position: absolute;
+    width: 110%;
+    height: 100%;
+    /*background-image: url("./images/bg20190531.jpg");*/
+    background-image: url("./images/bg_low.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    filter: blur(10px);
+    z-index: -1;
+    transform: scale(1.2);
+}
+
+.forecast-content {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.forecast-today {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+.forecast-today-top {
+    font-size: 60px;
+}
+
+.forecast-today-top > span {
+    font-size: 18px;
+}
+
+.forecast-today-bottom {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    line-height: 30px;
+}
+
+.forecast-today-bottom > div {
+    flex: 1;
+}
+
+.forecast-today-bottom > div > span {
+    font-size: 14px;
+    color: #e2e2e2;
+}
+
+.forecast-today-bottom a {
+    color: #ffffff;
+}
+
+.forecast-three {
+    display: flex;
+    flex-direction: row;
+}
+
+.forecast-three-item {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.forecast-three-item > div {
+    flex: 1;
+}
+
+.forecast-three-item + .forecast-three-item {
+    margin-left: 2px;
+}
+
+.forecast-three-item > div > div {
+    line-height: 30px;
+    text-align: center;
+}
+
+.forecast-three-item-right img {
+    height: 20px;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.forecast-block-title {
+    padding: 5px;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.forecast-block-content {
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 2px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.forecast-herder {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+    z-index: 9999;
+}
+
+.area-set {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.area-set-header {
+    /*padding: 60px 0;*/
+    background: url("./images/areabg.png");
+    background-size: cover;
+}
+
+.area-set-header-nav {
+    height: 30px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.area-set-header-search {
+    padding: 60px 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.area-set-position {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    line-height: 40px;
+}
+
+.area-set-position-icon {
+    width: 30px;
+    color: #41688f;
+}
+
+.area-set-position-name > span {
+    font-size: 14px;
+    color: #ababab;
+}
+
+/* 天预报 */
+.forecast-day {
+
+}
+
+.forecast-day-item {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    line-height: 40px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.forecast-day-item > div {
+    flex: 1;
+    overflow: hidden;
+}
+
+.forecast-day-item-icon {
+
+}
+
+.forecast-day-item-icon > img {
+    height: 80%;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+/* 返回导航 */
+.back-nav {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+.back-nav-btn {
+    position: absolute;
+    width: 30px;
+}
+
+.back-nav-name {
+    text-align: center;
+}
+
+/* 区域选择组件 */
+.area-header {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #3a5a83;
+}
+
+.area-header-icon {
+    width: 30px;
+    text-align: center;
+    color: #3a5a83;
+}
+
+.area-header-name {
+    flex: 1;
+}
+
+.area-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.area-content-item {
+    text-align: center;
+    /*width: 25%;*/
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 5px;
+}
+
+.area-content-item > span {
+    border: 1px solid #838383;
+    padding: 2px 8px;
+    border-radius: 5px;
+    color: #08062e;
+}
+
+/* 日出日落 */
+.sun {
+    position: relative;
+}
+
+.sun-top {
+    position: relative;
+    z-index: -1;
+    width: 90%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.sun-desc {
+    display: flex;
+    flex-direction: row;
+    color: #ffffff;
+}
+
+.sun-desc > div {
+    flex: 1;
+}
+
+.sun-desc > div:first-child {
+    text-align: left;
+}
+
+.sun-desc > div:last-child {
+    text-align: right;
+}
+
+.sun-surface-line {
+    border-bottom: 2px solid #d8d8d8;
+}
+
+/* 搜索组件 */
+.search {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 50vw;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0 10px;
+    background-color: #ffffff;
+}
+
+.search-input > input {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    border: 0;
+    outline: none;
+}
+
+.search-btn {
+    width: 70px;
+    background-color: #abb5f2;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* aqi组件 */
+.aqi-bar {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.aqi-bar-cursor {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    line-height: 15px;
+    left: 10px;
+    top: 20px;
+    background-color: #a3a4a8;
+    border-radius: 5px;
+    font-size: 6px;
+    color: #ffffff;
+}
+
+.aqi-bar-cursor:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color: #a3a4a8;
+    position: absolute;
+    top: 14px;
+    left: 7px;
+}
+
+.aqi-bar-cursor-value {
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 11px;
+}
+
+.aqi-bar-desc {
+    color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    overflow: hidden;
+}
+
+.aqi-bar-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 10px 0;
+}
+
+.aqi-bar-color {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.aqi-bar-color > div:first-child {
+    border-bottom-left-radius: 50vw;
+    border-top-left-radius: 50vw;
+}
+
+.aqi-bar-color > div:last-child {
+    border-bottom-right-radius: 50vw;
+    border-top-right-radius: 50vw;
+}
+
+.aqi-bar-color > div {
+    width: 16.667%;
+    height: 10px;
+}
+
+.aqi-bar-value {
+    width: 110%;
+}
+
+.aqi-bar-value > div {
+    display: inline;
+    float: left;
+    width: 14.2%;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.aqi-bar-level-desc {
+    display: flex;
+    flex-direction: row;
+}
+
+.aqi-bar-level-desc > div {
+    width: 20%;
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+/* aqi级别 */
+.aqi-level-desc {
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50vw;
+    text-align: center;
+}
+
+/* 广告组件 */
+.ad {
+    box-sizing: border-box;
+    width: 100%;
+    height: 150px;
+    line-height: 150px;
+    color: #ffffff;
+    border: 1px dotted #cccccc;
+    margin: 5px 0;
+    text-align: center;
+}
+
+/* 图片上传组件 */
+.upload {
+}
+
+.upload-btn {
+    width: 25%;
+    height: 0;
+    padding-bottom: 25%;
+    user-select: none;
+    box-sizing: border-box;
+    /*border: 1px solid red;*/
+    background-image: url("./images/add.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.upload-preview {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.upload-preview-item {
+    position: relative;
+    width: 25%;
+    padding-bottom: 25%;
+    height: 0;
+    /*padding-bottom: 100%;*/
+    border: 1px dashed #cccccc;
+    box-sizing: border-box;
+}
+
+.upload-preview-item > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* 用户反馈头部导航 */
+.feedback-header {
+    height: 50px;
+    line-height: 50px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    top: 0;
+    z-index: 999999;
+}
+
+/* 课业上传 */
+.work-study {
+    padding: 50px 10px 10px 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* 用户反馈表单 */
+.feedback-form {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 50px 10px 10px 10px;
+    box-sizing: border-box;
+}
+
+/* 反馈列表 */
+.feedback-list {
+    padding-top: 50px;
+    background-color: #f2f2f2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    /*overflow: hidden;*/
+}
+
+.feedback-list-item {
+    position: relative;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: -1px 1px 2px 1px #bdbdbd;
+    margin-bottom: 20px;
+    height: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.feedback-list-item-content {
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 通用列表彩带 */
+.colour-bar {
+
+}
+
+.colour-bar-cover {
+    top: 0;
+    left: 0;
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.colour-bar-cover > div {
+    position: absolute;
+    height: 25px;
+    line-height: 25px;
+    width: 30%;
+    background-color: #8288ce;
+    right: -8%;
+    top: 8%;
+    transform-origin: center;
+    transform: rotate(45deg);
+    text-align: center;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+
+/* 通用文本域组件 */
+.textarea > textarea {
+    width: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    height: 100%;
+    padding: 5px;
+    border: 0;
+}
+
+.textarea-desc {
+    text-align: right;
+}
+
+.textarea-desc > span {
+    font-size: 12px;
+    color: #cccccc;
+}
+
+/* 通用按钮组件 */
+.button {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding: 1px 0;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+
+/* 通用顶部导航组件 */
+.top-fixed-nav {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    top: 10px;
+    z-index: 999999;
+}
+
+.top-fixed-nav-list {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    border-radius: 50vw;
+    width: auto;
+    background-color: #9ac0e5;
+}
+
+.top-fixed-nav-list-item {
+    width: 80px;
+    text-align: center;
+    background-color: #9ac0e5;
+    border-radius: 50vw;
+    padding: 7px;
+    color: #40484b;
+}
+
+.top-fixed-nav-list-item-selected {
+    color: #ffffff;
+}
+
+.top-fixed-nav-list-item-selected > a {
+    color: #ffffff;
+}
+
+/* 通用右侧导航组件 */
+
+.right-fixed-nav {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 999999;
+    width: 65px;
+}
+
+.right-fixed-nav-list {
+    position: relative;
+    font-size: 14px;
+}
+
+.right-fixed-nav-list-item {
+    float: right;
+    right: 0;
+    margin-bottom: 15px;
+    padding: 1px 0 1px 10px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 57px;
+    color: #c5c5c5;
+}
+
+.right-fixed-nav-list-item > a {
+    color: #c5c5c5;
+}
+
+.right-fixed-nav-list-item-selected {
+    width: 100%;
+    color: #ffffff;
+}
+
+.right-fixed-nav-list-item-selected > a {
+    color: #ffffff;
+}
+
+/* 去掉点击链接时的背景色 */
+a:hover {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 通用alert组件 */
+.alert {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* 图片播放 */
+.image-play {
+
+}
+
+.image-play-header {
+    width: 200px;
+    margin: 15px auto;
+}
+
+.image-play-image {
+    height: 250px;
+}
+
+.image-play-image > img {
+    width: 100%;
+    height: 100%;
+}
+
+.image-play-btns {
+    display: flex;
+    flex-direction: row;
+}
+
+.image-play-btns > div {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.image-play-control {
+    /*height: 100px;*/
+    /*background: -webkit-linear-gradient(top, #aab3ee, #c1a5df);*/
+    padding: 10px 0;
+}
+
+.image-play-control-play {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.image-play-control-time {
+    overflow-x: scroll;
+    display: flex;
+    margin-top: 20px;
+}
+
+.image-play-control-time-item {
+    flex: 1;
+    height: 25px;
+    line-height: 25px;
+    color: #ebeaea;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.image-play-control-time-item-selected {
+    color: #35474d;
+}
+
+/* 通用实况顶部组件 */
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-top {
+    display: flex;
+    flex-direction: row;
+}
+
+.header-top-text {
+    padding: 0 5px;
+}
+
+.header-middle {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    line-height: 50px;
+}
+
+.header-middle-text {
+    width: 70px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.header-middle-icon {
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.header-middle-icon > img {
+    height: 100%;
+}
+
+.header-bottom {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    line-height: 50px;
+}
+
+.header-bottom > div {
+    text-align: center;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+/* 通用banner组件 */
+
+.banner {
+    position: relative;
+    /*height: 250px;*/
+}
+
+.swiper-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 通用信息展示组件 */
+.info-top {
+    width: 100%;
+}
+
+.info-top-title {
+    display: inline-block;
+    padding: 1px 10px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.info-bottom {
+
+}
+
+.info-bottom-title {
+    font-size: 20px;
+    font-weight: 300;
+    padding: 5px 0;
+}
+
+.info-bottom-content {
+    text-indent: 2em;
+    font-size: 16px;
+}
+
+
+/* 路由天气 */
+.tour {
+
+}
+
+/* 颜色切换 */
+.color-switch {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+}
+
+.color-switch > div {
+    flex: 1;
+}
+
+/* 通用照片组件 */
+.photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: -1px 1px 2px 1px #bdbdbd;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.photo-image {
+    height: 70%;
+}
+
+.photo-image > img {
+    width: 100%;
+    height: 100%;
+}
+
+.photo-desc {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2px 0;
+}
+
+.photo-desc-brief {
+    position: absolute;
+    width: 70%;
+    left: 50%;
+    transform: translate(-50%);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 15%;
+    font-size: 15px;
+}
+
+.photo-date {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+    color: #979797;
+}
+
+.photo-date > div {
+    flex: 1;
+}
+
+.photo-date > div:first-child {
+    text-align: left;
+}
+
+.photo-date > div:last-child {
+    text-align: right;
+}
+
+/* 天气实景 */
+.real-scene {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.real-scene-item {
+    position: relative;
+    width: 30%;
+    padding-bottom: 36%;
+    margin: 1.25%;
+    height: 0;
+    box-sizing: border-box;
+}
+
+/* 生活指数 */
+.life-index {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.life-index-item {
+    position: relative;
+    width: 25%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 3px 0;
+}
+
+.life-index-item > div {
+    flex: 1;
+}
+
+.life-index-item-icon {
+    text-align: center;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.life-index-item-icon > img {
+    width: 60%;
+    vertical-align: middle;
+}
+
+.life-index-item-level {
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+    height: 20px;
+}
+
+.life-index-item-desc {
+    font-size: 8px;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* 文章列表 */
+/*文章列表*/
+.article-list {
+
+}
+
+.article-list-item {
+    border-bottom: 1px solid #dcdcdc;
+    overflow: hidden;
+    padding: 10px 0;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.article-list-item-main {
+    width: 70%;
+}
+
+.article-list-item-main-title {
+    color: #666666;
+    font-size: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.article-list-item-icon {
+    width: 30%;
+}
+
+.article-list-item-icon > img {
+    width: 100%;
+    height: 100%;
+}
+
+.article-list-item-main-date {
+    font-size: 16px;
+    color: #b9b7b8;
+    margin-top: 10px;
+}
+
+/* 实况地图 */
+.realtime-map-text {
+    display: inline-block;
+    color: #000;
+    position: absolute;
+    top: -2em;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 10px;
+    border-radius: 15px;
+    padding: 0 6px;
+    text-align: center;
+    height: 15px;
+}
+
+.realtime-map-city {
+    float: left;
+    margin-top: 15px;
+    margin-left: -10px;
+    width: 100px;
+    position: absolute;
+    font-size: 10px;
+}
+
+/* 实况表格 */
+.realtime-table {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.realtime-table-fixed {
+    position: fixed;
+    width: 100%;
+    height: 35px;
+    color: #ffffff;
+}
+
+.realtime-table-fixed span {
+    font-size: 8px;
+    color: #f2f2f2;
+}
+
+.realtime-table-scroll {
+    height: 90%;
+    margin-top: 35px;
+    overflow-y: scroll;
+}
+
+.realtime-table-scroll > div {
+
+}
+
+.realtime-table-item {
+    display: flex;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.realtime-table-item:first-child {
+    height: 35px;
+}
+
+.realtime-table-item > div {
+    flex: 1;
+    padding: 5px 2px;
+    display: flex;
+    align-items: center;
+}
+
+.realtime-table-item > div:first-child {
+    padding-left: 5px;
+}
+
+.realtime-table-item-null {
+    height: 35px;
+    line-height: 35px;
+    font-size: 10px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* 分割线 */
+.split-line {
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+}
+
+/* 折叠 */
+.accordion {
+
+}
+
+.accordion-top {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #c3c3c3;
+    font-size: 18px;
+}
+
+.accordion-top-icon {
+    width: 30px;
+    text-align: center;
+}
+
+.accordion-bottom {
+    border-bottom: 1px solid #c3c3c3;
+}
+
+.accordion-bottom-content {
+    color: #7d7d7d;
+    font-size: 14px;
+    text-indent: 2em;
+    line-height: 25px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+/* 交通枢纽天气 */
+.traffic {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+}
+
+.traffic > div {
+    flex: 1;
+    position: relative;
+}
+
+.traffic-list {
+
+}
+
+.traffic-list-item {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    line-height: 50px;
+}
+
+.traffic-list-item-icon {
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+}
+
+.traffic-list-item-icon > img {
+    height: 60%;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.traffic-list-item-content {
+
+}
+
+.traffic-alarm-item {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.traffic-alarm-item img {
+    width: 30px;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.traffic-icon {
+    font-size: 20px;
+}
+
+/* 视频文章列表 */
+.article-video-list {
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.article-video-list-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.article-video-list-item-video {
+    height: 200px;
+}
+
+.article-video-list-item-video > video {
+    object-fit: fill;
+}
+
+.article-video-list-item-video > video {
+    width: 100%;
+    height: 100%;
+}
+
+.article-video-list-item-desc {
+    background-color: #ffffff;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.article-video-list-item-time {
+    background-color: #ffffff;
+    text-align: right;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+/* 图片文章列表 */
+.article-image-list {
+    padding: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: #ffffff;
+}
+
+.article-image-list-item {
+    display: flex;
+    padding: 5px 0;
+    color: #626262;
+}
+
+.article-image-list-item:first-child {
+    height: 150px;
+}
+
+.article-image-list-item + .article-image-list-item {
+    border-top: 1px solid #d4d4d4;
+}
+
+.article-image-list-item:first-child {
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.article-image-list-item-image {
+    width: 100px;
+}
+
+.article-image-list-item-image > img {
+    width: 100%;
+}
+
+.article-image-list-item:first-child .article-image-list-item-image {
+    width: 100%;
+    height: 120px;
+}
+
+.article-image-list-item-image > img {
+    width: 100%;
+    height: 100%;
+}
+
+.article-image-list-item-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 5px;
+    box-sizing: border-box;
+    height: 50px;
+    line-height: 50px;
+}
+
+.article-image-list-item:first-child .article-image-list-item-title {
+    margin-top: -35px;
+    height: 35px;
+    line-height: 35px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.article-image-list-item-content {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 5px;
+    max-height: 50px;
+}
+
+.article-image-list-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbcbcb;
+}
+
+
+/* 表单通用样式 */
+
+.form-item {
+    margin-bottom: 10px;
+}
+
+.form-item-title {
+    padding: 3px 10px;
+    box-sizing: border-box;
+    color: #cccccc;
+}
+
+.form-item-content {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.form-item-content input {
+    border: 0;
+    outline: none;
+    width: 100%;
+}
+
+/* 单选按钮组 */
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    user-select: none;
+}
+
+.radio-group-item {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    line-height: 30px;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.radio-group-item-circle {
+    margin: auto 5px;
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    border: 2px solid red;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.radio-group-item-circle-dot {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    border-radius: 50%;
+}
+
+/* 复选框组 */
+.checkbox-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+.checkbox-group-item {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    line-height: 30px;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.checkbox-group-item-rect {
+    margin: auto 5px;
+    width: 1em;
+    height: 1em;
+    border: 2px solid red;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.checkbox-group-item-rect-dot {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+
+/* 灾情反馈 */
+.disaster-form {
+    /*background-color: #f2f2f2;*/
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.disaster-form-location {
+    display: flex;
+    flex-direction: row;
+}
+
+.disaster-form-location > div {
+    /*border: 1px solid red;*/
+}
+
+.disaster-form-map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    /*border: 1px solid red;*/
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.disaster-form-map #map {
+    width: 90%;
+    height: 300px;
+    margin: 50px auto;
+}
+
+.disaster-form-map-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    line-height: 25px;
+    z-index: 999999;
+    font-size: 10px;
+    border: 1px solid #cccccc;
+}
+
+.insure-form {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* 预警定制 */
+.alarm-item {
+
+}
+
+.alarm-name {
+    padding: 5px 10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    /*background: linear-gradient(to right, red , blue);*/
+}
+
+.alarm-icon {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+}
+
+.alarm-icon > div {
+    width: 10%;
+    padding: 5px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.alarm-icon > div > img {
+    width: 100%;
+    height: 100%;
+}
+
+.alarm-icon-selected{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width:5px;
+    height:10px;
+    border-color:#00ff00;
+    border-style:solid;
+    border-width:0 3px 3px 0;
+    transform:rotate(45deg);
+}
+
+/* 分钟降水 */
+.minute-rain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.minute-rain > div {
+    border-radius: 5px;
+}
+
+.minute-rain-label {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 50px;
+    height: 50%;
+}
+
+.minute-rain-label > div {
+    flex: 1;
+    padding-top: 13px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.minute-rain-time {
+    position: absolute;
+    z-index: 9999999;
+    display: flex;
+    flex-direction: row;
+    color: #5ed5ff;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    bottom: 0;
+padding: 5px 0;
+}
+
+.minute-rain-time > div {
+    padding: 0 5px;
+}
+
+.custom-alarm-top {
+    display: flex;
+    flex-direction: row;
+    color: #ffffff;
+    text-align:center;
+}
+
+.custom-alarm-top > div {
+    height: 35px;
+    line-height: 35px;
+    display: inline-block;
+    flex: 1;
+    padding: 0 2px;
+    box-sizing: border-box;
+}
+
+.custom-alarm-submit {
+    position: fixed;
+    width: 100%;
+    margin-left: -10px;
+    bottom: 5px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+/* 预警定制  */
+.alarm-button {
+    width: 30%;
+    height: 50px;
+    float: left;
+}
+
+.alarm-top-city {
+    width: 100%;
+    height: 50px;
+
+}
+.alarm-top-main  {
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    -webkit-flex: 1 1;
+    flex: 1 1;
+    padding: 0 2px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+
+}
+.alarm-top-title-index {
+
+
+}
+.alarm-top-title-index span{
+    font-size: 50px;
+    font-weight:800;
+    color: fuchsia;
+    letter-spacing: 8px;
+
+}
+
+.alarm-top-title {
+    width: 100px;
+    background-color: #02A7F0;
+    height: 50px;
+    float: left;
+    border-radius:5px;
+}
+.alarm-top-title-right {
+    width: 100px;
+    background-color: #02A7F0;
+    height: 50px;
+    float: right;
+    border-radius:5px;
+}
+.alarm-top-title span{
+    font-size: 30px;
+    font-weight:400;
+    color: white;
+}
+.alarm-top-title-right span{
+    font-size: 30px;
+    font-weight:400;
+    color: white;
+}
+
+.alarm-top-city-left {
+
+     float: left;
+ }
+.alarm-top-city-left span{
+    font-size: 30px;
+    font-weight:800;
+    color: yellow;
+
+}
+
+.alarm-top-city-right {
+    background-color: #02A7F0;
+    float: right;
+    width: 90px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius:5px;
+
+}
+.alarm-top-city-right span{
+    color: yellow;
+
+}
+
+
+.alarm-user-list {
+    width: 95%;
+    height: 50px;
+    float: left;
+}
+
+.alarm-user-list-left {
+    width: 10%;
+    height: 30px;
+    float: left;
+    border-radius:20px;
+    background-color: #02A7F0;
+    text-align: center;
+    line-height: 30px;
+
+
+}
+.alarm-user-list-center {
+    width: 70%;
+    height: 30px;
+    float: left;
+    margin-left: 10px;
+    background-color: #02A7F0;
+    line-height: 30px;
+    text-align: center;
+}
+.alarm-user-list-right {
+    width: 10%;
+    height: 30px;
+    float: left;
+    margin-left: 10px;
+    background-color: #02A7F0;
+    line-height: 30px;
+    text-align: center;
+    border-radius:20px;
+}
+
+.alarm-user-city-search{
+    float: left;
+    width: 60%;
+}
+
+.alarm-user-city-search input{
+    float: left;
+    outline-style: none ;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 13px 14px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+
+}
+
+.alarm-user-city-list{
+    width: 60px;
+    height: 30px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.alarm-user-city-list span{
+    width:60px;
+    height: 30px;
+    float: left;
+    background-color: #02A7F0;
+    text-align: center;
+    line-height: 30px;
+}
+
+.alarm-user-city-check{
+    /*
+    border:1px solid red;
+    */
+    color: red;
+
+}
+
+.alarm-user-type-list{
+    width: 40%;
+    height: 45px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 30px;
+    background-color: aliceblue;
+
+}
+
+.alarm-user-type-color{
+    width: 20px;
+    height: 20px;
+    float: left;
+    border-radius: 20px;
+    background-color: #08062e;
+    line-height: 25px;
+    margin-top: 15px;
+}
+
+.alarm-user-type-btn{
+    width: 55%;
+    height: 45px;
+    float: left;
+    line-height: 45px;
+
+}
+
+.alarm-user-type-btn span{
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+.alarm-user-type-red{
+    width: 20px;
+    height: 20px;
+    float: left;
+    border-radius: 20px;
+    background-color: red;
+    line-height: 25px;
+    margin-top: 15px;
+}
+.alarm-user-type-yellow{
+    width: 20px;
+    height: 20px;
+    float: left;
+    border-radius: 20px;
+    background-color:yellow;
+    line-height: 25px;
+    margin-top: 15px;
+}
+.alarm-user-type-orange{
+    width: 20px;
+    height: 20px;
+    float: left;
+    border-radius: 20px;
+    background-color:orange;
+    line-height: 25px;
+    margin-top: 15px;
+}
+.alarm-user-type-blue{
+    width: 20px;
+    height: 20px;
+    float: left;
+    border-radius: 20px;
+    background-color:blue;
+    line-height: 25px;
+    margin-top: 15px;
+}
+
+
+
+
